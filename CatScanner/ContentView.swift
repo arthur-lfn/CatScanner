@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var model = FrameHandler()
+        
     var body: some View {
-        VStack {
-            Text("Hello, world!")
-        }
-        .padding()
+        FrameView(image: model.frame)
+            .ignoresSafeArea()
     }
 }
 
