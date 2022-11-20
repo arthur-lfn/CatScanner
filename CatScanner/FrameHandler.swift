@@ -36,6 +36,7 @@ class FrameHandler: NSObject, ObservableObject {
         // Combine the two other cases into the default case
         default:
             permissionGranted = false
+            requestPermission()
         }
     }
     

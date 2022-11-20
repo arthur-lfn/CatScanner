@@ -11,8 +11,32 @@ struct ContentView: View {
     @StateObject private var model = FrameHandler()
         
     var body: some View {
-        FrameView(image: model.frame)
-            .ignoresSafeArea()
+        NavigationView {
+            VStack {
+                FrameView(image: model.frame)
+                    .ignoresSafeArea()
+                Button {
+                    // take photo
+                } label: {
+                    Label {
+                        Text("Take Photo")
+                    } icon: {
+                        ZStack {
+                            Circle()
+                                .strokeBorder(.white, lineWidth: 3)
+                                .frame(width: 82, height: 82)
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 70, height: 70)
+                        }
+                    }
+                }
+                .labelStyle(.iconOnly)
+                .padding()
+            }
+            .background(.black)
+            .navigationTitle("Camera View")
+        }
     }
 }
 
