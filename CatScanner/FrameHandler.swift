@@ -74,7 +74,7 @@ extension FrameHandler: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
     }
     
-    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
+    func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }

@@ -5,18 +5,24 @@
 //  Created by Arturo Alfani on 16/11/22.
 //
 
+import CoreML
 import SwiftUI
+import Vision
 
 struct ContentView: View {
     @StateObject private var model = FrameHandler()
+    
+    @State private var showingAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
         
     var body: some View {
         NavigationView {
-            VStack {
+            ZStack {
                 FrameView(image: model.frame)
-                    .ignoresSafeArea()
+//                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
                 Button {
-                    // take photo
+                    classifyCat()
                 } label: {
                     Label {
                         Text("Take Photo")
@@ -33,10 +39,32 @@ struct ContentView: View {
                 }
                 .labelStyle(.iconOnly)
                 .padding()
+                .alert(alertTitle, isPresented: $showingAlert) {
+                    Button("OK") { }
+                } message: {
+                    Text(alertMessage)
+                }
             }
             .background(.black)
             .navigationTitle("Camera View")
         }
+    }
+    
+    func classifyCat() {
+        do {
+            let config = MLModelConfiguration()
+            let mlModel = try CatClassifier(configuration: config)
+            
+            let prediction = try mlModel.prediction(image: model.frame as! CVPixelBuffer)
+            alertTitle = "This cat is a:"
+            alertMessage = "\(prediction)"
+            print("\(prediction)")
+        } catch {
+            alertTitle = "Error"
+            alertMessage = "Failed classifying your cat"
+        }
+        
+        //showingAlert = true
     }
 }
 
