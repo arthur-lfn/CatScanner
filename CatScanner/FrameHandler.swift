@@ -10,6 +10,8 @@ import CoreImage
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
+    @Published var imageBuffer: CVPixelBuffer?
+    
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
@@ -76,6 +78,11 @@ extension FrameHandler: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
+        
+        DispatchQueue.main.async { [unowned self] in
+            self.imageBuffer = imageBuffer
+        }
+        
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
         

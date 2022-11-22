@@ -18,9 +18,10 @@ struct ContentView: View {
         
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .bottom) {
                 FrameView(image: model.frame)
-//                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+                    .ignoresSafeArea()
+                
                 Button {
                     classifyCat()
                 } label: {
@@ -55,7 +56,7 @@ struct ContentView: View {
             let config = MLModelConfiguration()
             let mlModel = try CatClassifier(configuration: config)
             
-            let prediction = try mlModel.prediction(image: model.frame as! CVPixelBuffer)
+            let prediction = try mlModel.prediction(image: model.imageBuffer!)
             alertTitle = "This cat is a:"
             alertMessage = "\(prediction)"
             print("\(prediction)")
@@ -64,7 +65,7 @@ struct ContentView: View {
             alertMessage = "Failed classifying your cat"
         }
         
-        //showingAlert = true
+        showingAlert = true
     }
 }
 
