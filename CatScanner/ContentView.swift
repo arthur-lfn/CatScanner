@@ -55,16 +55,22 @@ struct ContentView: View {
         do {
             let config = MLModelConfiguration()
             let mlModel = try CatClassifier(configuration: config)
-            
-            let prediction = try mlModel.prediction(image: model.imageBuffer!)
+
+            let output = try? mlModel.prediction(image: model.imageBuffer!)
+            if let output = output {
+                let results = output.classLabelProbs.sorted { $0.1 > $1.1 }
+                let result = results.map { (key, value) in
+                    return "\(key) = \(String(format: "%.2f", value * 100))%"
+                }.joined(separator: "\n")
+
+                self.alertMessage = result
+            }
             alertTitle = "This cat is a:"
-            alertMessage = "\(prediction)"
-            print("\(prediction)")
         } catch {
             alertTitle = "Error"
             alertMessage = "Failed classifying your cat"
         }
-        
+
         showingAlert = true
     }
 }
