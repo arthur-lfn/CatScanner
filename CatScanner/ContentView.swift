@@ -13,12 +13,20 @@ struct ContentView: View {
     @StateObject private var model = FrameHandler()
     
     @State private var showingAlert = false
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
+    
+    @State var resultTitle = ""
+    @State var resultMessage = ""
+    @State var navigateWhenTrue: Bool = false
+    
+    @State var currentBreed = ""
         
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
+                NavigationLink("Navigator",
+                               destination: ResultView(resultTitle: $resultTitle, resultMessage: $resultMessage, currentBreed: $currentBreed),
+                               isActive: $navigateWhenTrue
+                )
                 FrameView(image: model.frame)
                     .ignoresSafeArea()
                 
@@ -40,14 +48,14 @@ struct ContentView: View {
                 }
                 .labelStyle(.iconOnly)
                 .padding()
-                .alert(alertTitle, isPresented: $showingAlert) {
+                .alert(resultTitle, isPresented: $showingAlert) {
                     Button("OK") { }
                 } message: {
-                    Text(alertMessage)
+                    Text(resultMessage)
                 }
             }
             .background(.black)
-            .navigationTitle("Camera View")
+            .navigationTitle("Camera")
             .toolbar(.hidden)
         }
     }
@@ -62,24 +70,26 @@ struct ContentView: View {
                 let results = output.classLabelProbs.sorted { $0.1 > $1.1 }
                 print(results[0].value)
                 if (results[0].value > 0.75) {
+                    // nome razza: results[0].key
                     let result = results.map { (key, value) in
                         return "\(key) = \(String(format: "%.2f", value * 100))%"
                     }
                     let relevantResult = "\(result[0])\n\(result[1])\n\(result[2])"
                     
-                    alertTitle = "This cat is a:"
-                    self.alertMessage = relevantResult
+                    currentBreed = results[0].key
+                    resultTitle = "This cat is a:"
+                    self.resultMessage = relevantResult
+                    navigateWhenTrue = true
                 } else {
-                    alertTitle = "I don't see a cat"
-                    self.alertMessage = "Please take a picture of a cat"
+                    resultTitle = "I don't see a cat"
+                    self.resultMessage = "Please take a picture of a cat"
+                    showingAlert = true
                 }
             }
         } catch {
-            alertTitle = "Error"
-            alertMessage = "Failed classifying your cat"
+            resultTitle = "Error"
+            resultMessage = "Failed classifying your cat"
         }
-
-        showingAlert = true
     }
 }
 

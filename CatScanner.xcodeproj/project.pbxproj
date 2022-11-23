@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		691D9DDA292E1D6F00EC0652 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691D9DD9292E1D6F00EC0652 /* ResultView.swift */; };
+		691D9DDC292E20A800EC0652 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691D9DDB292E20A800EC0652 /* CircleImage.swift */; };
 		693E8C912924DD3E004A78FA /* CatScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693E8C902924DD3E004A78FA /* CatScannerApp.swift */; };
 		693E8C932924DD3E004A78FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693E8C922924DD3E004A78FA /* ContentView.swift */; };
 		693E8C952924DD40004A78FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 693E8C942924DD40004A78FA /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		691D9DD9292E1D6F00EC0652 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		691D9DDB292E20A800EC0652 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		693E8C8D2924DD3E004A78FA /* CatScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		693E8C902924DD3E004A78FA /* CatScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatScannerApp.swift; sourceTree = "<group>"; };
 		693E8C922924DD3E004A78FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 			children = (
 				693E8C902924DD3E004A78FA /* CatScannerApp.swift */,
 				693E8C922924DD3E004A78FA /* ContentView.swift */,
+				691D9DD9292E1D6F00EC0652 /* ResultView.swift */,
+				691D9DDB292E20A800EC0652 /* CircleImage.swift */,
 				693E8C9E2924ED0E004A78FA /* FrameView.swift */,
 				693E8CA02924EDFC004A78FA /* FrameHandler.swift */,
 				693E8C942924DD40004A78FA /* Assets.xcassets */,
@@ -157,8 +163,10 @@
 				693E8C9F2924ED0E004A78FA /* FrameView.swift in Sources */,
 				693E8C932924DD3E004A78FA /* ContentView.swift in Sources */,
 				693E8CA3292A9ADA004A78FA /* CatClassifier.mlmodel in Sources */,
+				691D9DDC292E20A800EC0652 /* CircleImage.swift in Sources */,
 				693E8CA12924EDFC004A78FA /* FrameHandler.swift in Sources */,
 				693E8C912924DD3E004A78FA /* CatScannerApp.swift in Sources */,
+				691D9DDA292E1D6F00EC0652 /* ResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
