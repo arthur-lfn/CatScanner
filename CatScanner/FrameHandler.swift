@@ -29,13 +29,12 @@ class FrameHandler: NSObject, ObservableObject {
     
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-            case .authorized: // The user has previously granted access to the camera.
+            case .authorized:
                 permissionGranted = true
                 
-            case .notDetermined: // The user has not yet been asked for camera access.
+            case .notDetermined:
                 requestPermission()
                 
-        // Combine the two other cases into the default case
         default:
             permissionGranted = false
             requestPermission()
@@ -43,7 +42,6 @@ class FrameHandler: NSObject, ObservableObject {
     }
     
     func requestPermission() {
-        // Strong reference not a problem here but might become one in the future.
         AVCaptureDevice.requestAccess(for: .video) { [unowned self] granted in
             self.permissionGranted = granted
         }
@@ -70,7 +68,6 @@ extension FrameHandler: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let cgImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         
-        // All UI updates should be/ must be performed on the main queue.
         DispatchQueue.main.async { [unowned self] in
             self.frame = cgImage
         }

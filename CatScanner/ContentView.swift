@@ -73,7 +73,6 @@ struct ContentView: View {
                 let results = output.classLabelProbs.sorted { $0.1 > $1.1 }
 
                 if (results[0].value > 0.75) {
-                    // breed name: results[0].key
                     let result = results.map { (key, value) in
                         return "\(String(format: "%.2f", value * 100))% \(key)"
                     }
