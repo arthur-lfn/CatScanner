@@ -12,6 +12,8 @@ struct ResultView: View {
     @Binding var resultMessage: String
     @Binding var currentBreed: String
     
+    var photo: CGImage?
+    
     var body: some View {
         ZStack {
             CustomColor.backgroundColor
@@ -23,7 +25,7 @@ struct ResultView: View {
                     .frame(height: 370)
                     .cornerRadius(15)
                 
-                CircleImage()
+                CircleImage(photo: photo)
                     .offset(x: -80, y: -130)
                     .padding(.bottom, -130)
                 

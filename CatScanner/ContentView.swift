@@ -19,12 +19,13 @@ struct ContentView: View {
     @State var navigateWhenTrue: Bool = false
     
     @State var currentBreed = ""
+    @State var photo: CGImage?
         
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 NavigationLink("Navigator",
-                               destination: ResultView(resultTitle: $resultTitle, resultMessage: $resultMessage, currentBreed: $currentBreed),
+                               destination: ResultView(resultTitle: $resultTitle, resultMessage: $resultMessage, currentBreed: $currentBreed, photo: photo),
                                isActive: $navigateWhenTrue
                 )
                 FrameView(image: model.frame)
@@ -62,6 +63,8 @@ struct ContentView: View {
     
     func classifyCat() {
         do {
+            photo = model.frame
+            
             let config = MLModelConfiguration()
             let mlModel = try CatClassifier(configuration: config)
 
