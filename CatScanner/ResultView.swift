@@ -13,37 +13,34 @@ struct ResultView: View {
     @Binding var currentBreed: String
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(red: 250, green: 237, blue: 205)
-                    .ignoresSafeArea()
-                VStack {
-                    Image("Siamese")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 370)
-                        .cornerRadius(15)
-                    
-                    CircleImage()
-                        .offset(x: -80, y: -130)
-                        .padding(.bottom, -130)
-                    
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(resultTitle)
-                                .font(.title)
-                            
-                            Text(resultMessage)
-                                .font(.subheadline)
-                        }
-                        .padding()
+        ZStack {
+            CustomColor.backgroundColor
+                .ignoresSafeArea()
+            VStack {
+                Image("Siamese")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 370)
+                    .cornerRadius(15)
+                
+                CircleImage()
+                    .offset(x: -80, y: -130)
+                    .padding(.bottom, -130)
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(resultTitle)
+                            .font(.title)
                         
-                        Spacer()
+                        Text(resultMessage)
+                            .font(.subheadline)
                     }
+                    .padding()
+                    
+                    Spacer()
                 }
-                .foregroundColor(.black)
-                .navigationTitle(currentBreed)
             }
+            .navigationBarTitle(currentBreed)
         }
     }
 }

@@ -55,7 +55,7 @@ struct ContentView: View {
                 }
             }
             .background(.black)
-            .navigationTitle("Camera")
+            .navigationBarTitle("Camera")
             .toolbar(.hidden)
         }
     }

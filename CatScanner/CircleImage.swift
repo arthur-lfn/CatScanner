@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+struct CustomColor {
+    static let backgroundColor = Color("Background")
+}
+
 struct CircleImage: View {
-    
+    struct CustomColor {
+        static let backgroundColor = Color("Background")
+    }
     var body: some View {
         Image("Siamese")
             .resizable()
             .frame(width: 150, height: 150)
             .clipShape(Circle())
             .overlay {
-                Circle().stroke(Color(red: 250, green: 237, blue: 205), lineWidth: 8)
+                Circle().stroke(CustomColor.backgroundColor, lineWidth: 8)
             }
     }
 }
