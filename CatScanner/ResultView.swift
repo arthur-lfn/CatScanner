@@ -19,23 +19,32 @@ struct ResultView: View {
             CustomColor.backgroundColor
                 .ignoresSafeArea()
             VStack {
-                Image("Siamese")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 370)
-                    .cornerRadius(15)
+                GeometryReader { geometry in
+                    Image(currentBreed)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(
+                            width: geometry.size.width,
+                            height: 380,
+                            alignment: .center
+                        )
+                        .clipped()
+                }
                 
                 CircleImage(photo: photo)
-                    .offset(x: -80, y: -130)
-                    .padding(.bottom, -130)
+                    .offset(x: -80, y: -100)
+                    .padding(.bottom, -100)
                 
                 HStack {
                     VStack(alignment: .leading) {
                         Text(resultTitle)
                             .font(.title)
                         
+                        Divider()
+                        Text("Precisely:\n")
+                            .font(.headline)
                         Text(resultMessage)
-                            .font(.subheadline)
+                            .font(.headline)
                     }
                     .padding()
                     
@@ -49,6 +58,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(resultTitle: .constant("This cat is a:"), resultMessage: .constant("Siamese"), currentBreed: .constant("Siamese"))
+        ResultView(resultTitle: .constant("This cat seems to be a Siamese"), resultMessage: .constant("98.00% Siamese\n02.00% Ragdoll"), currentBreed: .constant("Siamese"))
     }
 }

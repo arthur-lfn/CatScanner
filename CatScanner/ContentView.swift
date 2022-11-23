@@ -71,21 +71,21 @@ struct ContentView: View {
             let output = try? mlModel.prediction(image: model.imageBuffer!)
             if let output = output {
                 let results = output.classLabelProbs.sorted { $0.1 > $1.1 }
-                print(results[0].value)
+
                 if (results[0].value > 0.75) {
-                    // nome razza: results[0].key
+                    // breed name: results[0].key
                     let result = results.map { (key, value) in
-                        return "\(key) = \(String(format: "%.2f", value * 100))%"
+                        return "\(String(format: "%.2f", value * 100))% \(key)"
                     }
                     let relevantResult = "\(result[0])\n\(result[1])\n\(result[2])"
                     
                     currentBreed = results[0].key
-                    resultTitle = "This cat is a:"
-                    self.resultMessage = relevantResult
+                    resultTitle = "This cat seems to be a \(currentBreed)."
+                    resultMessage = relevantResult
                     navigateWhenTrue = true
                 } else {
                     resultTitle = "I don't see a cat"
-                    self.resultMessage = "Please take a picture of a cat"
+                    resultMessage = "Please take a picture of a cat"
                     showingAlert = true
                 }
             }
