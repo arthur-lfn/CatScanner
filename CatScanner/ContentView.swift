@@ -48,6 +48,7 @@ struct ContentView: View {
             }
             .background(.black)
             .navigationTitle("Camera View")
+            .toolbar(.hidden)
         }
     }
     
@@ -59,13 +60,20 @@ struct ContentView: View {
             let output = try? mlModel.prediction(image: model.imageBuffer!)
             if let output = output {
                 let results = output.classLabelProbs.sorted { $0.1 > $1.1 }
-                let result = results.map { (key, value) in
-                    return "\(key) = \(String(format: "%.2f", value * 100))%"
-                }.joined(separator: "\n")
-
-                self.alertMessage = result
+                print(results[0].value)
+                if (results[0].value > 0.75) {
+                    let result = results.map { (key, value) in
+                        return "\(key) = \(String(format: "%.2f", value * 100))%"
+                    }
+                    let relevantResult = "\(result[0])\n\(result[1])\n\(result[2])"
+                    
+                    alertTitle = "This cat is a:"
+                    self.alertMessage = relevantResult
+                } else {
+                    alertTitle = "I don't see a cat"
+                    self.alertMessage = "Please take a picture of a cat"
+                }
             }
-            alertTitle = "This cat is a:"
         } catch {
             alertTitle = "Error"
             alertMessage = "Failed classifying your cat"
