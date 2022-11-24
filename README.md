@@ -7,7 +7,7 @@ The ML model implemented in this project was created with CreateML and contains 
 
 ## Author
 
-Arturo Alfani
+[Arturo Alfani](https://github.com/arthur-lfn)
 
 ## Credits and Resources
 
