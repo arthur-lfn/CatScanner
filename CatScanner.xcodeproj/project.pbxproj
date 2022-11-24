@@ -298,7 +298,6 @@
 				DEVELOPMENT_TEAM = U6452PB59V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = CatClassifier;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to take pictures of the cats you want to scan";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -330,7 +329,6 @@
 				DEVELOPMENT_TEAM = U6452PB59V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = CatClassifier;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to take pictures of the cats you want to scan";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

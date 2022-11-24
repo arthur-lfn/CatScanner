@@ -11,8 +11,8 @@ import CoreImage
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
     @Published var imageBuffer: CVPixelBuffer?
+    @Published var permissionGranted = false
     
-    private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     private let context = CIContext()
