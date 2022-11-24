@@ -85,7 +85,7 @@ struct ContentView: View {
                         let relevantResult = "\(result[0])\n\(result[1])\n\(result[2])"
                         
                         currentBreed = results[0].key
-                        resultTitle = "This cat seems to be a \(currentBreed)."
+                        resultTitle = "This cat seems to be \(currentBreed)"
                         resultMessage = relevantResult
                         navigateWhenTrue = true
                     } else {

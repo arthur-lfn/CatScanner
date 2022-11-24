@@ -59,6 +59,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(resultTitle: .constant("This cat seems to be a Siamese"), resultMessage: .constant("98.00% Siamese\n02.00% Ragdoll"), currentBreed: .constant("Siamese"))
+        ResultView(resultTitle: .constant("This cat seems to be Siamese"), resultMessage: .constant("98.00% Siamese\n02.00% Ragdoll"), currentBreed: .constant("Siamese"))
     }
 }
