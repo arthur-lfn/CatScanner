@@ -12,11 +12,15 @@ Arturo Alfani
 ## Credits and Resources
 
 [Original Cat Scanner App](https://apps.apple.com/us/app/cat-scanner/id1447491786)
+
 [Original Dataset](https://www.kaggle.com/datasets/shawngano/gano-cat-breed-image-collection) - Author: Olivia Gano
-[App Icon Cat Vector] - Author: Pablo Rozenberg
-[App Icon Frame Vector] - Author: Heztasia
+
+[App Icon Cat Vector](https://thenounproject.com/icon/cat-114598/) - Author: Pablo Rozenberg
+
+[App Icon Frame Vector](https://thenounproject.com/icon/scan-5203299/) - Author: Heztasia
 
 [Educational Material - Camera Preview](https://www.neuralception.com) - Author: David Kirchhoff
+
 [Educational Material - CoreML](https://www.createwithswift.com/core-ml-explained-apples-machine-learning-framework/) - Authors: Moritz Philip Recke, Tiago Gomes Pereira
 
 
