@@ -56,8 +56,9 @@ struct ContentView: View {
                 }
             }
             .background(.black)
-            .navigationBarTitle("Camera")
-            .toolbar(.hidden)
+            .navigationBarTitle("Take a picture of a cat")
+            .navigationBarTitleDisplayMode(.inline)
+            //.toolbar(.hidden)
         }
     }
     

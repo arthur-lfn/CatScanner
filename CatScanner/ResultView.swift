@@ -52,6 +52,7 @@ struct ResultView: View {
                 }
             }
             .navigationBarTitle(currentBreed)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
