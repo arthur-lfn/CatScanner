@@ -1,3 +1,7 @@
+![](https://github.com/arthur-lfn/Assets/blob/main/CatScanner/CatScanner.png)
+
+---
+
 ### About
 
 Cat Scanner is an **iOS App** with which you can identify a cat’s breed from a picture taken with the device’s camera.
