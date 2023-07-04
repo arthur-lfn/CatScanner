@@ -16,7 +16,7 @@ struct ResultView: View {
     
     var body: some View {
         ZStack {
-            CustomColor.backgroundColor
+            Color("Background")
                 .ignoresSafeArea()
             VStack {
                 GeometryReader { geometry in

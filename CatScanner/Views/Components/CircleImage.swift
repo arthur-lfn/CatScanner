@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-struct CustomColor {
-    static let backgroundColor = Color("Background")
-}
-
 struct CircleImage: View {
     var photo: CGImage?
     private let label = Text("your picture")
@@ -23,7 +19,7 @@ struct CircleImage: View {
                 .frame(width: 150, height: 150)
                 .clipShape(Circle())
                 .overlay {
-                    Circle().stroke(CustomColor.backgroundColor, lineWidth: 8)
+                    Circle().stroke(Color("Background"), lineWidth: 8)
             }            
         } else {
             // this code mostly has the purpose of showing a preview in xcode
@@ -32,7 +28,7 @@ struct CircleImage: View {
                 .frame(width: 150, height: 150)
                 .clipShape(Circle())
                 .overlay {
-                    Circle().stroke(CustomColor.backgroundColor, lineWidth: 8)
+                    Circle().stroke(Color("Background"), lineWidth: 8)
                 }
         }
     }
