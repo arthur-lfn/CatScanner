@@ -14,26 +14,31 @@ struct ResultView: View {
     var photo: CGImage?
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack {
             Color("Background")
                 .ignoresSafeArea()
-            ZStack(alignment: .bottom) {
-                Image(currentBreed)
-                    .resizable()
-                    .scaledToFit()
-                CircleImage(photo: photo)
-                    .offset(y: 75)
-            }
             VStack(alignment: .leading) {
+                ZStack(alignment: .bottom) {
+                    Image(currentBreed)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 25)
+                        )
+                        .padding()
+                    CircleImage(photo: photo)
+                        .offset(y: 60)
+                }
                 Spacer()
                 Text(resultMessage)
-                    .font(.title)
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .padding(.leading)
+                Spacer()
             }
-            .padding(.leading, 20)
-            .padding(.bottom, 60)
-            .navigationBarTitle(currentBreed)
-            .navigationBarTitleDisplayMode(.large)
         }
+        .navigationBarTitle(currentBreed)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -41,7 +46,7 @@ struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             ResultView(
-                resultMessage: .constant("98.00% Siamese\n02.00% Ragdoll"),
+                resultMessage: .constant("97.50% Siamese\n02.00% Ragdoll\n00.50% Sphynx"),
                 currentBreed: .constant("Siamese")
             )
         }

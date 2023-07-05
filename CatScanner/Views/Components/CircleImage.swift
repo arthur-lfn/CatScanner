@@ -26,7 +26,7 @@ struct CircleImage: View {
             Image("Siamese")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 150, height: 150)
+                .frame(width: 125, height: 125)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(Color("Background"), lineWidth: 8)
