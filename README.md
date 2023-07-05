@@ -1,4 +1,7 @@
-![](https://github.com/arthur-lfn/Assets/blob/main/CatScanner/CatScanner.png)
+<p align="left">
+  <img src="https://github.com/arthur-lfn/Assets/blob/main/CatScanner/CatScanner01.gif" width="250" />
+  <img src="https://github.com/arthur-lfn/Assets/blob/main/CatScanner/CatScanner02.gif" width="250" /> 
+</p>
 
 ---
 
