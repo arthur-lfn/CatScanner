@@ -16,29 +16,31 @@ struct CameraView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
+                Color(.black)
                 FrameView(image: frameHandler.frame)
-                    .ignoresSafeArea()
-                
-                Button {
-                    cameraVVM.classifyCat(
-                        permissionGranted: frameHandler.permissionGranted,
-                        frame: frameHandler.frame,
-                        imageBuffer: frameHandler.imageBuffer
-                    )
-                } label: {
-                    ZStack {
-                        Circle()
-                            .strokeBorder(.white, lineWidth: 3)
-                            .frame(width: 82, height: 82)
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 70, height: 70)
+                VStack(alignment: .center) {
+                    Text("Take a picture of a cat")
+                        .foregroundColor(.white)
+                    Button {
+                        cameraVVM.classifyCat(
+                            permissionGranted: frameHandler.permissionGranted,
+                            frame: frameHandler.frame,
+                            imageBuffer: frameHandler.imageBuffer
+                        )
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .strokeBorder(.white, lineWidth: 3)
+                                .frame(width: 82, height: 82)
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 70, height: 70)
+                        }
                     }
                 }
-                .padding()
+                .padding(.bottom, 60)
             }
-            .navigationBarTitle("Take a picture of a cat")
-            .navigationBarTitleDisplayMode(.inline)
+            .ignoresSafeArea()
             .alert(cameraVVM.resultTitle, isPresented: $cameraVVM.showingAlert) {
                 Button("OK") { }
             } message: {
