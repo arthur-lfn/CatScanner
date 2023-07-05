@@ -48,7 +48,6 @@ struct CameraView: View {
             }
             .navigationDestination(isPresented: $cameraVVM.navigateWhenTrue) {
                 ResultView(
-                    resultTitle: $cameraVVM.resultTitle,
                     resultMessage: $cameraVVM.resultMessage,
                     currentBreed: $cameraVVM.currentBreed,
                     photo: cameraVVM.photo
