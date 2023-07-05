@@ -14,13 +14,8 @@ struct CameraView: View {
     @StateObject var cameraVVM = CameraViewVM()
         
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .bottom) {
-                NavigationLink(
-                    "Navigator",
-                    destination: ResultView(resultTitle: $cameraVVM.resultTitle, resultMessage: $cameraVVM.resultMessage, currentBreed: $cameraVVM.currentBreed, photo: cameraVVM.photo),
-                   isActive: $cameraVVM.navigateWhenTrue
-                )
                 FrameView(image: frameHandler.frame)
                     .ignoresSafeArea()
                 
@@ -31,31 +26,32 @@ struct CameraView: View {
                         imageBuffer: frameHandler.imageBuffer
                     )
                 } label: {
-                    Label {
-                        Text("Take Photo")
-                    } icon: {
-                        ZStack {
-                            Circle()
-                                .strokeBorder(.white, lineWidth: 3)
-                                .frame(width: 82, height: 82)
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 70, height: 70)
-                        }
+                    ZStack {
+                        Circle()
+                            .strokeBorder(.white, lineWidth: 3)
+                            .frame(width: 82, height: 82)
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 70, height: 70)
                     }
                 }
-                .labelStyle(.iconOnly)
                 .padding()
-                .alert(cameraVVM.resultTitle, isPresented: $cameraVVM.showingAlert) {
-                    Button("OK") { }
-                } message: {
-                    Text(cameraVVM.resultMessage)
-                }
             }
-            .background(.black)
             .navigationBarTitle("Take a picture of a cat")
             .navigationBarTitleDisplayMode(.inline)
-            //.toolbar(.hidden)
+            .alert(cameraVVM.resultTitle, isPresented: $cameraVVM.showingAlert) {
+                Button("OK") { }
+            } message: {
+                Text(cameraVVM.resultMessage)
+            }
+            .navigationDestination(isPresented: $cameraVVM.navigateWhenTrue) {
+                ResultView(
+                    resultTitle: $cameraVVM.resultTitle,
+                    resultMessage: $cameraVVM.resultMessage,
+                    currentBreed: $cameraVVM.currentBreed,
+                    photo: cameraVVM.photo
+                )
+            }
         }
     }
 }

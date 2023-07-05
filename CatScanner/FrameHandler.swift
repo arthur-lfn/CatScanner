@@ -18,7 +18,6 @@ class FrameHandler: NSObject, ObservableObject {
     
     let context = CIContext()
 
-    
     override init() {
         super.init()
         checkPermission()
