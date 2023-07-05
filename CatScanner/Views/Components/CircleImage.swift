@@ -22,9 +22,10 @@ struct CircleImage: View {
                     Circle().stroke(Color("Background"), lineWidth: 8)
             }            
         } else {
-            // this code mostly has the purpose of showing a preview in xcode
+            // this code has only the purpose of showing a preview in xcode
             Image("Siamese")
                 .resizable()
+                .scaledToFill()
                 .frame(width: 150, height: 150)
                 .clipShape(Circle())
                 .overlay {

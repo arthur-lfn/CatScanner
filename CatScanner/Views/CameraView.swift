@@ -5,7 +5,6 @@
 //  Created by Arturo Alfani on 16/11/22.
 //
 
-import CoreML
 import SwiftUI
 import Vision
 
