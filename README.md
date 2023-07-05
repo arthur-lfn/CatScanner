@@ -4,10 +4,11 @@
 
 ### About
 
-Cat Scanner is an **iOS App** with which you can identify a cat’s breed from a picture taken with the device’s camera.
-It was developed with the goal of learning and experimenting with the basics of Machine Learning.
+Cat Scanner is an **iOS App** with which you can identify 13 cat breeds by taking a picture with an iPhone.
+This project was developed with the goal of learning and experimenting with the basics of Machine Learning and image classification.
 
-The ML model used in this project was created with CreateML and contains a selection of 13 breeds. The model was trained using a pre-existing dataset (check the **Credits** section below for the source).
+The ML model used in this project was built with CreateML and trained using part of a pre-existing dataset of cat breeds (check the **Credits** section below for the source).
+The model's accuracy is far from being perfect and would greatly benefit from an additional step of object recognition before any classification is performed. Nevertheless, rather than achieve a high level of accuracy, the main goal of this project is to show how an image can be captured by the device's camera, sent to the model and how the output can be displayed with SwiftUI.
 
 ### Installation
 
